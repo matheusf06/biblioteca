@@ -1,0 +1,40 @@
+<%- include('./partials/Header.ejs') %>
+<div class="container">
+   <div class="row">
+      <div class="col">
+         <h1>Livros</h1>
+         <a type="button" class="btn btn-light" href="/">Voltar</a>
+         <table class="table">
+            <thead>
+               <tr>
+                  <th scope="col">Titulo do livro</th>
+                  <th scope="col">Autor do livro</th>
+                  <th scope="col">Série do livro</th>
+                  <th scope="col"></th>
+               </tr>
+            </thead>
+            <tbody>
+               <% livros.forEach( livro => { %>
+               <tr>
+                  <td>
+                     <%-livro.titulo %>
+                  </td>
+                  <td>
+                     <%-livro.autor %>
+                  </td>
+                  <td>
+                     <%-livro.serieLivro %>
+                  </td>
+                  <td>
+                     <a type="button" class="btn btn-dark" href="/livros/alugar/<%-livro.idLivro %>">Alugar</a>
+                     <a type="button" class="btn btn-link" href="/livros/editar/<%-livro.idLivro %>">Editar</a>
+                     <a type="button" class="btn btn-light" href="/livros/delete/<%-livro.idLivro %>">Excluir</a>
+                  </td>
+               </tr>
+               <% }) %>
+            </tbody>
+         </table>
+      </div>
+   </div>
+</div>
+<%- include('./partials/Footer.ejs') %>

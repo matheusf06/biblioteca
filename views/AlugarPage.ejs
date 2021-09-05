@@ -1,0 +1,31 @@
+<%- include('./partials/Header.ejs') %>
+<h1>Alugar Livro</h1>
+<form method="post">
+   <% livros.forEach( livro => { %>
+   <h4>
+      Titulo do livro:
+      <%-livro.titulo %>
+   </h4>
+   <h6>
+      Autor do livro:
+      <%-livro.autor %>
+   </h6>
+   <p>
+      Série referente ao livro:
+      <%-livro.serieLivro %>
+   </p>
+   <input type="text" name="id_livro" value="<%- livro.idLivro %>" style="display: none;">
+   <% }) %>
+   <select class="form-select" aria-label="Default select example" name="id_aluno" required>
+      <% alunos.forEach( aluno => { %>
+      <option value="<%- aluno.idAluno %>"selected><%- aluno.nome %> - <%- aluno.serieAluno %></option>
+      <% }) %>
+   </select>
+   <label>Data de devolução:</label>
+   <input type="date" name="data_entrega" required>
+   <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-dark">Confirmar</button>
+      <a type="button" class="btn btn-light" href="/livros">Cancelar</a>
+   </div>
+</form>
+<%- include('./partials/Footer.ejs') %>

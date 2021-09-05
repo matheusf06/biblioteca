@@ -1,0 +1,27 @@
+<%- include('../partials/Header.ejs') %>
+<div class="container">
+   <div class="row">
+      <div class="col">
+         <h1>Cadastrar Aluno</h1>
+         <form method="post">
+            <div class="mb-3">
+               <label class="form-label">Matricula:</label>
+               <input type="text" class="form-control" placeholder="Informe a matrícula" name="matricula" required>
+            </div>
+            <div class="mb-3">
+               <label class="form-label">Nome:</label>
+               <input type="text" class="form-control" placeholder="Informe o nome" name="nome" required>
+            </div>
+            <div class="mb-3">
+               <label class="form-label">Série:</label>
+               <input type="text" class="form-control" placeholder="Informe a série" name="serie" required>
+            </div>
+            <div class="d-grid gap-2">
+               <button type="submit" class="btn btn-dark">Salvar</button>
+               <a type="submit" class="btn btn-light" href="/">Cancelar</a>
+            </div>
+         </form>
+      </div>
+   </div>
+</div>
+<%- include('../partials/Footer.ejs') %>

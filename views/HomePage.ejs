@@ -1,0 +1,68 @@
+<%- include('./partials/Header.ejs') %>
+<div class="container">
+   <div class="row">
+      <div class="col">
+         <h1>Biblioteca</h1>
+         <a type="button" class="btn btn-dark" href="/livros">Ver Livros Disponíveis</a>
+         <a type="button" class="btn btn-dark" href="/cadastrar/aluno">Cadastrar Aluno</a>
+         <a type="button" class="btn btn-dark" href="/cadastrar/livro">Cadastrar Livro</a>
+            <table class="table">
+                <thead>
+                   <tr>
+                      <th scope="col">Data de devolução</th>
+                      <th scope="col">Titulo do livro</th>
+                      <th scope="col">Nome do aluno</th>
+                      <th scope="col">Série do aluno</th>
+                      <th scope="col"></th>
+                   </tr>
+                </thead>
+                <tbody>
+                   <% emprestimos.forEach( emprestimo => { %>
+                   <tr>
+                      <td>
+                         <%-emprestimo.data_entrega %>
+                      </td>
+                      <td>
+                         <%-emprestimo.titulo %>
+                      </td>
+                      <td>
+                         <%-emprestimo.nome %>
+                      </td>
+                      <td>
+                         <%-emprestimo.serieAluno %>
+                      </td>
+                      <td>
+                         <a type="button" class="btn btn-dark" href="/devolver/<%- emprestimo.idLivro %>">Devolver</a>
+                      </td>
+                   </tr>
+                   <% }) %>
+                </tbody>
+             </table>
+
+         <% if(page != 0) { %>
+            <nav class="paginacao">
+                <ul class="pagination justify-content-center">
+                   <% if(page > 0 ) {%>
+                   <li class="page-item">
+                      <a class="btn btn-dark" tabindex="-1" aria-disabled="true" href="?page=<%= (page - 1) %>">Anterior</a>
+                   </li>
+                   <% } %>
+                   <% for(let i=0; i<totalPages; i++) {%>
+                   <li class="page-item <% if(i==(page)){ %> active <% } %>">
+                      <a class="btn btn-dark" href="?page=<%= i %>">
+                      <%= (i+1) %>
+                      </a>
+                   </li>
+                   <% } %>
+                   <% if(page < (totalPages-1) ) {%>
+                   <li class="page-item">
+                      <a class="btn btn-dark" tabindex="-1" aria-disabled="true" href="?page=<%= (page + 1) %>">Anterior</a>
+                   </li>
+                   <% } %>
+                </ul>
+             </nav>
+        <% } else { } %>
+    </div>
+   </div>
+</div>
+<%- include('./partials/Footer.ejs') %>

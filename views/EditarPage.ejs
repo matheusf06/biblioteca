@@ -1,0 +1,24 @@
+<%- include('./partials/Header.ejs') %>
+<h1>LivroPage</h1>
+<form method="post">
+   <% livro.forEach( lvr => { %>
+   <div class="mb-3">
+      <label class="form-label">Titulo:</label>
+      <input type="text" class="form-control" placeholder="Informe titulo" name="titulo" value="<%-lvr.titulo %>" required>
+   </div>
+   <div class="mb-3">
+      <label class="form-label">Autor:</label>
+      <input type="text" class="form-control" placeholder="Informe o nome do autor" name="autor" value="<%-lvr.autor %>" required>
+   </div>
+   <div class="mb-3">
+      <label class="form-label">Série:</label>
+      <input type="text" class="form-control" placeholder="Informe a série que o livro pertence" name="serieLivro" value="<%-lvr.serieLivro %>" required>
+      <input type="text" class="form-control" name="idLivro" value="<%-lvr.idLivro %>" style="display: none" required>
+   </div>
+   <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-dark">Salvar</button>
+      <a type="button" class="btn btn-light" href="/livros">Cancelar</a>
+   </div>
+   <% }) %>
+</form>
+<%- include('./partials/Footer.ejs') %>
